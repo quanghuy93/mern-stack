@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
 const DashBoardActions = props => {
@@ -10,10 +9,6 @@ const DashBoardActions = props => {
       <Link to="/add-education" className="btn btn-light"><i className="fas fa-graduation-cap text-primary"></i> Add Education</Link>
     </div>
   )
-}
-
-DashBoardActions.propTypes = {
-
 }
 
 export default DashBoardActions

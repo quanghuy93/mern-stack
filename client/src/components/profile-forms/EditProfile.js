@@ -1,5 +1,5 @@
 import React, {useState, Fragment, useEffect} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createProfile, getCurrentProfile} from '../../actions/profile';
@@ -38,8 +38,8 @@ const EditProfile = ({profile: {profile, loading}, createProfile, getCurrentProf
       linkedin: loading || !profile.linkedin ? '' : profile.linkedin,
       youtube: loading || !profile.youtube ? '' : profile.youtube,
       instagram: loading || !profile.instagram ? '' : profile.instagram
-    }, [loading]);
-  });
+    });
+  }, [loading, getCurrentProfile]);
 
   const {company, website, location, status, skills, githubusername, bio, twitter, facebook, linkedin, youtube, instagram} = formData;
 

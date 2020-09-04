@@ -12,6 +12,8 @@ export const getCurrentProfile = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
+    dispatch({ type: CLEAR_PROFILE });
+
     dispatch({
       type: PROFILE_ERROR,
       payload: {msg: err.response.statusText, status: err.response.status}
@@ -40,7 +42,7 @@ export const getProfiles = () => async dispatch => {
 // Get profile by ID
 export const getProfileById = (userId) => async dispatch => {
   try {
-    const res = await axios.get('/api/profile/user/${userId}');
+    const res = await axios.get(`/api/profile/user/${userId}`);
 
     dispatch({
       type: GET_PROFILE,
@@ -57,7 +59,7 @@ export const getProfileById = (userId) => async dispatch => {
 // Get Github repos
 export const getGithubRepos = (username) => async dispatch => {
   try {
-    const res = await axios.get('/api/profile/github/${username}');
+    const res = await axios.get(`/api/profile/github/${username}`);
 
     dispatch({
       type: GET_REPOS,
@@ -213,7 +215,7 @@ export const deleteEducation = id => async dispatch => {
 // Delete account && profile
 export const deleteAccount = id => async dispatch => {
   try {
-    const res = await axios.delete(`/api/profile`);
+    await axios.delete(`/api/profile`);
 
     dispatch({type: CLEAR_PROFILE});
 
